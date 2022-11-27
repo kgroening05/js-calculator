@@ -3,11 +3,15 @@ const operators = ["+", "-", "*", "/", "="]
 let operator = "";
 let numbers = [];
 
-// Populate HTML with buttons for all operators
+// Populate HTML with buttons for all operators, special class for "="
 const operatorDiv = document.querySelector(".operators");
 operators.forEach(element => {
     const opBtn = document.createElement('button');
-    opBtn.classList.add(`operator-button`);
+    if (element == "="){
+        opBtn.classList.add(`equals-button`);
+    }else{
+        opBtn.classList.add(`operator-button`);
+    }
     opBtn.textContent = element;
     operatorDiv.appendChild(opBtn);
 });
@@ -26,19 +30,27 @@ const operatorButtons = document.querySelectorAll(".operator-button")
 operatorButtons.forEach(element => {
     element.addEventListener("click", event =>{
         operator = event.target.textContent;
-        console.log(operator)
     });
 });
+
+const equalsButton = document.querySelector(".equals-button");
+equalsButton.addEventListener("click",()=>calculate(operator,numbers))
 
 // Add event listener to all number buttons
 const numberButtons = document.querySelectorAll(".number-button")
 numberButtons.forEach(element => {
     element.addEventListener("click", event =>{
         numbers.push(event.target.textContent);
-        console.log(numbers)
     })
 });
 
+// Calculate function to be run when equals button is pressed
+function calculate(operator,numbers){
+    console.log(operator)
+    console.log(numbers)
+}
+
+// Math Functions
 function add(first, second) {
     return first + second
 };
