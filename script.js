@@ -1,5 +1,7 @@
 // Array containing all operators
 const operators = ["+", "-", "*", "/", "="]
+let operator = "";
+let numbers = [];
 
 // Populate HTML with buttons for all operators
 const operatorDiv = document.querySelector(".operators");
@@ -18,6 +20,24 @@ for (let number = 0; number <= 9; number++) {
     numBtn.textContent = number;
     numberDiv.appendChild(numBtn);
 }
+
+// Add event listener to all operator buttons
+const operatorButtons = document.querySelectorAll(".operator-button")
+operatorButtons.forEach(element => {
+    element.addEventListener("click", event =>{
+        operator = event.target.textContent;
+        console.log(operator)
+    });
+});
+
+// Add event listener to all number buttons
+const numberButtons = document.querySelectorAll(".number-button")
+numberButtons.forEach(element => {
+    element.addEventListener("click", event =>{
+        numbers.push(event.target.textContent);
+        console.log(numbers)
+    })
+});
 
 function add(first, second) {
     return first + second
