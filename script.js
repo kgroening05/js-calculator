@@ -1,6 +1,6 @@
 // Array containing all operators
 const operators = ["+", "-", "*", "/", "="]
-let operator = "";
+let calcString = "";
 let numbers = [];
 
 // Populate HTML with buttons for all operators, special class for "="
@@ -29,34 +29,27 @@ for (let number = 0; number <= 9; number++) {
 const operatorButtons = document.querySelectorAll(".operator-button")
 operatorButtons.forEach(element => {
     element.addEventListener("click", event =>{
-        operator = event.target.textContent;
+        calcString = calcString.concat(event.target.textContent);
     });
 });
 
 // Add event listener to equals button
 const equalsButton = document.querySelector(".equals-button");
-equalsButton.addEventListener("click",()=>calculate(operator,numbers))
+equalsButton.addEventListener("click",()=>calculate(calcString))
 
 // Add event listener to all number buttons
 const numberButtons = document.querySelectorAll(".number-button")
 numberButtons.forEach(element => {
     element.addEventListener("click", event =>{
-        numbers.push(event.target.textContent);
+        calcString = calcString.concat(event.target.textContent);
     })
 });
 
 // Calculation handler function to be run when equals button is pressed
-function calculate(operator,numbers){
+function calculate(calcString){
     // Use Last operator to call approprate calc fn
-    switch (operator[operator.length-1]) {
-        case "*":
-            multiply(numbers);
-            break;
-        case "/":
-            divide(numbers);
-        default:
-            break;
-    }
+    console.log(calcString);
+    
 }
 
 // Math Functions
