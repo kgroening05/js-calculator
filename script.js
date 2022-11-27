@@ -1,21 +1,29 @@
 
 
-const add = function(first,second) {
+function add(first,second) {
 	return first + second
 };
 
-const subtract = function(first,second) {
+function subtract(first,second) {
 	return first - second
 };
 
-const multiply = function(array) {
+function multiply(array) {
     let intProduct = array[0];
     for (let index = 1; index < array.length; index++) {
       intProduct *= array[index]
     }
     return intProduct
-  };
+};
 
-const power = function(number, toThePowerOf) {
+function divide(array){
+    let intQuotient = array[0];
+    for (let index = 1; index < array.length; index++) {
+      intQuotient /= array[index]
+    }
+    return intQuotient
+}
+
+function power(number, toThePowerOf) {
 	return number ** toThePowerOf
 };
