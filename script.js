@@ -33,6 +33,7 @@ operatorButtons.forEach(element => {
     });
 });
 
+// Add event listener to equals button
 const equalsButton = document.querySelector(".equals-button");
 equalsButton.addEventListener("click",()=>calculate(operator,numbers))
 
@@ -44,10 +45,18 @@ numberButtons.forEach(element => {
     })
 });
 
-// Calculate function to be run when equals button is pressed
+// Calculation handler function to be run when equals button is pressed
 function calculate(operator,numbers){
-    console.log(operator)
-    console.log(numbers)
+    // Use Last operator to call approprate calc fn
+    switch (operator[operator.length-1]) {
+        case "*":
+            multiply(numbers);
+            break;
+        case "/":
+            divide(numbers);
+        default:
+            break;
+    }
 }
 
 // Math Functions
