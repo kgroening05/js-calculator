@@ -1,5 +1,5 @@
 // Array containing all operators
-const operators = ["+", "-", "*", "/", "="]
+const operators = ["+", "-", "*", "/", "^", "="]
 let operator = "";
 let entryString = "";
 let firstNumber = "";
@@ -94,6 +94,8 @@ function displayNumbers(event) {
         console.log("Result: " + result)
     } else {
         operatorEntryField.textContent = operator;
+        firstEntryField.textContent = firstNumber;
+        secondEntryField.textContent = secondNumber;
     }
 }
 
@@ -113,6 +115,9 @@ function runCalculation(first, oper, second){
             break;
         case "/":
             result = divide(first, second);
+            break;
+        case "^":
+            result = power(first, second);
             break;
         default:
             break;
