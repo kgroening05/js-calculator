@@ -6,6 +6,10 @@ let firstNumber = "";
 let secondNumber = "";
 let result = "";
 
+// Variables for Display fields on HTML
+const firstEntryField = document.querySelector(".first-number");
+const secondEntryField = document.querySelector(".second-number");
+const operatorEntryField = document.querySelector(".operator");
 
 // Populate HTML with buttons for all operators, special class for "="
 const operatorDiv = document.querySelector(".operators");
@@ -48,17 +52,19 @@ operatorButtons.forEach(element => {
 
         // reset entryString
         entryString = "";
+        displayNumbers(event);
     });
 });
 
 // Add event listener to equals button
 const equalsButton = document.querySelector(".equals-button");
-equalsButton.addEventListener("click",()=>{
+equalsButton.addEventListener("click",(event)=>{
     // When pressed, push the entryString value to the secondNumber string
     secondNumber = entryString;
     entryString = "";
     // Run calculation
     runCalculation(firstNumber, operator, secondNumber);
+    displayNumbers(event);
 
 })
 
@@ -68,8 +74,28 @@ numberButtons.forEach(element => {
     element.addEventListener("click", event =>{
         // Add numbers entered to the entryString
         entryString = entryString.concat(event.target.textContent);
+        displayNumbers(event);
     })
 });
+
+// Handle Dislaying numbers and results in the screen
+function displayNumbers(event) {
+    const target = event.target.textContent;
+    if (!isNaN(target)){
+        if (firstNumber == "") {
+            firstEntryField.textContent = entryString;
+        } else {
+            secondEntryField.textContent = entryString;
+        }
+    } else if(target == "="){
+        firstEntryField.textContent = firstNumber;
+        secondEntryField.textContent = ""
+        operatorEntryField.textContent = ""
+        console.log("Result: " + result)
+    } else {
+        operatorEntryField.textContent = operator;
+    }
+}
 
 // Determine which calculation function to run based on operator
 function runCalculation(first, oper, second){
