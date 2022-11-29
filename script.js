@@ -1,7 +1,11 @@
 // Array containing all operators
 const operators = ["+", "-", "*", "/", "="]
-let calcString = "";
-let numbers = [];
+let operator = "";
+let entryString = "";
+let firstNumber = "";
+let secondNumber = "";
+let result = "";
+
 
 // Populate HTML with buttons for all operators, special class for "="
 const operatorDiv = document.querySelector(".operators");
@@ -29,32 +33,74 @@ for (let number = 0; number <= 9; number++) {
 const operatorButtons = document.querySelectorAll(".operator-button")
 operatorButtons.forEach(element => {
     element.addEventListener("click", event =>{
-        calcString = calcString.concat(event.target.textContent);
+        // Push the entryString value to the first empty number string
+        if (firstNumber == ""){
+            firstNumber = entryString;
+        } else {
+            secondNumber = entryString;
+        }
+        // If secondNumber has numbers, run the calc function before getting next operator
+        if (!secondNumber == ""){
+            runCalculation(firstNumber, operator, secondNumber);
+        }
+        // Get the operator being entered
+        operator = event.target.textContent;
+
+        // reset entryString
+        entryString = "";
     });
 });
 
 // Add event listener to equals button
 const equalsButton = document.querySelector(".equals-button");
-equalsButton.addEventListener("click",()=>calculate(calcString))
+equalsButton.addEventListener("click",()=>{
+    // When pressed, push the entryString value to the secondNumber string
+    secondNumber = entryString;
+    entryString = "";
+    // Run calculation
+    runCalculation(firstNumber, operator, secondNumber);
+
+})
 
 // Add event listener to all number buttons
 const numberButtons = document.querySelectorAll(".number-button")
 numberButtons.forEach(element => {
     element.addEventListener("click", event =>{
-        calcString = calcString.concat(event.target.textContent);
+        // Add numbers entered to the entryString
+        entryString = entryString.concat(event.target.textContent);
     })
 });
 
-// Calculation handler function to be run when equals button is pressed
-function calculate(calcString){
-    // Use Last operator to call approprate calc fn
-    console.log(calcString);
-    
+// Parse the calculation string
+function runCalculation(first, oper, second){
+
+    // evaluate the operator to determine what function to run
+    switch (oper) {
+        case "+":
+            result = add(first, second);
+            break;
+        case "-":
+            result = subtract(first, second);
+            break;
+        case "*":
+            result = multiply(first, second);
+            break;
+        case "/":
+            result = divide(first, second);
+            break;
+        default:
+            break;
+    }
+    // reset global variables
+    firstNumber = result;
+    secondNumber = "";
+    operator = ""
 }
+
 
 // Math Functions
 function add(first, second) {
-    return first + second
+    return +first + +second
 };
 
 function subtract(first, second) {
