@@ -6,20 +6,6 @@ let firstNumber = "";
 let secondNumber = "";
 let result = "";
 
-// Variables for Display fields on HTML
-const firstEntryField = document.querySelector(".first-number");
-const secondEntryField = document.querySelector(".second-number");
-const operatorEntryField = document.querySelector(".operator");
-const numberDiv = document.querySelector(".numbers")
-const operatorButtons = document.querySelectorAll(".operator-button")
-const equalsButton = document.querySelector(".equals-button");
-const numberButtons = document.querySelectorAll(".number-button")
-
-// Disable operator buttons if entryString is empty
-if (entryString == ""){
-    operatorButtons.disabled = true;
-}
-
 // Populate HTML with buttons for all operators, special class for "="
 const operatorDiv = document.querySelector(".operators");
 operators.forEach(element => {
@@ -40,6 +26,15 @@ for (let number = 0; number <= 9; number++) {
     numBtn.textContent = number;
     numberDiv.appendChild(numBtn);
 }
+
+// Variables for Display fields on HTML
+const firstEntryField = document.querySelector(".first-number");
+const secondEntryField = document.querySelector(".second-number");
+const operatorEntryField = document.querySelector(".operator");
+const numberDiv = document.querySelector(".numbers")
+const operatorButtons = document.querySelectorAll(".operator-button")
+const equalsButton = document.querySelector(".equals-button");
+const numberButtons = document.querySelectorAll(".number-button")
 
 // Add event listener to all operator buttons
 operatorButtons.forEach(element => {
