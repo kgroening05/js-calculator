@@ -15,6 +15,11 @@ const operatorButtons = document.querySelectorAll(".operator-button")
 const equalsButton = document.querySelector(".equals-button");
 const numberButtons = document.querySelectorAll(".number-button")
 
+// Disable operator buttons if entryString is empty
+if (entryString == ""){
+    operatorButtons.disabled = true;
+}
+
 // Populate HTML with buttons for all operators, special class for "="
 const operatorDiv = document.querySelector(".operators");
 operators.forEach(element => {
