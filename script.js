@@ -1,5 +1,5 @@
 // Array containing all operators
-const operators = ["+", "-", "*", "/", "^", "="]
+const operators = ["+", "-", "*", "/", "^", "=", "Clear"]
 let operator = "";
 let entryString = "";
 let firstNumber = "";
@@ -12,6 +12,8 @@ operators.forEach(element => {
     const opBtn = document.createElement('button');
     if (element == "="){
         opBtn.classList.add(`equals-button`);
+    }else if (element == "Clear"){
+        opBtn.classList.add(`clear-button`);
     }else{
         opBtn.classList.add(`operator-button`);
     }
