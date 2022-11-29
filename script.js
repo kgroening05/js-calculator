@@ -36,6 +36,7 @@ const secondEntryField = document.querySelector(".second-number");
 const operatorEntryField = document.querySelector(".operator");
 const operatorButtons = document.querySelectorAll(".operator-button")
 const equalsButton = document.querySelector(".equals-button");
+const clearButton = document.querySelector(".clear-button");
 const numberButtons = document.querySelectorAll(".number-button")
 
 // Initial Run Code / functions:
@@ -71,6 +72,17 @@ equalsButton.addEventListener("click",(event)=>{
     entryString = "";
     // Run calculation
     runCalculation(firstNumber, operator, secondNumber);
+    displayNumbers(event);
+    operatorButtonHandler();
+})
+
+// Add event listener to clear button
+clearButton.addEventListener("click",(event) => {
+    firstNumber = "";
+    secondNumber = "";
+    entryString = "";
+    result = "";
+    operator = "";
     displayNumbers(event);
     operatorButtonHandler();
 })
