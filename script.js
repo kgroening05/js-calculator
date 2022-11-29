@@ -10,6 +10,10 @@ let result = "";
 const firstEntryField = document.querySelector(".first-number");
 const secondEntryField = document.querySelector(".second-number");
 const operatorEntryField = document.querySelector(".operator");
+const numberDiv = document.querySelector(".numbers")
+const operatorButtons = document.querySelectorAll(".operator-button")
+const equalsButton = document.querySelector(".equals-button");
+const numberButtons = document.querySelectorAll(".number-button")
 
 // Populate HTML with buttons for all operators, special class for "="
 const operatorDiv = document.querySelector(".operators");
@@ -25,7 +29,6 @@ operators.forEach(element => {
 });
 
 // Populate HTML with buttons for all numbers 0-9
-const numberDiv = document.querySelector(".numbers")
 for (let number = 0; number <= 9; number++) {
     const numBtn = document.createElement('button');
     numBtn.classList.add(`number-button`);
@@ -34,7 +37,6 @@ for (let number = 0; number <= 9; number++) {
 }
 
 // Add event listener to all operator buttons
-const operatorButtons = document.querySelectorAll(".operator-button")
 operatorButtons.forEach(element => {
     element.addEventListener("click", event =>{
         // Push the entryString value to the first empty number string
@@ -57,7 +59,6 @@ operatorButtons.forEach(element => {
 });
 
 // Add event listener to equals button
-const equalsButton = document.querySelector(".equals-button");
 equalsButton.addEventListener("click",(event)=>{
     // When pressed, push the entryString value to the secondNumber string
     secondNumber = entryString;
@@ -69,7 +70,6 @@ equalsButton.addEventListener("click",(event)=>{
 })
 
 // Add event listener to all number buttons
-const numberButtons = document.querySelectorAll(".number-button")
 numberButtons.forEach(element => {
     element.addEventListener("click", event =>{
         // Add numbers entered to the entryString
