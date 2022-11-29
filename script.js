@@ -20,6 +20,7 @@ operators.forEach(element => {
 });
 
 // Populate HTML with buttons for all numbers 0-9
+const numberDiv = document.querySelector(".numbers")
 for (let number = 0; number <= 9; number++) {
     const numBtn = document.createElement('button');
     numBtn.classList.add(`number-button`);
@@ -31,7 +32,6 @@ for (let number = 0; number <= 9; number++) {
 const firstEntryField = document.querySelector(".first-number");
 const secondEntryField = document.querySelector(".second-number");
 const operatorEntryField = document.querySelector(".operator");
-const numberDiv = document.querySelector(".numbers")
 const operatorButtons = document.querySelectorAll(".operator-button")
 const equalsButton = document.querySelector(".equals-button");
 const numberButtons = document.querySelectorAll(".number-button")
