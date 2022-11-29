@@ -71,7 +71,7 @@ numberButtons.forEach(element => {
     })
 });
 
-// Parse the calculation string
+// Determine which calculation function to run based on operator
 function runCalculation(first, oper, second){
 
     // evaluate the operator to determine what function to run
@@ -107,20 +107,12 @@ function subtract(first, second) {
     return first - second
 };
 
-function multiply(array) {
-    let intProduct = array[0];
-    for (let index = 1; index < array.length; index++) {
-        intProduct *= array[index]
-    }
-    return intProduct
+function multiply(first, second) {
+    return first * second;
 };
 
-function divide(array) {
-    let intQuotient = array[0];
-    for (let index = 1; index < array.length; index++) {
-        intQuotient /= array[index]
-    }
-    return intQuotient
+function divide(first, second) {
+    return first / second;
 }
 
 function power(number, toThePowerOf) {
