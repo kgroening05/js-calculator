@@ -36,6 +36,9 @@ const operatorButtons = document.querySelectorAll(".operator-button")
 const equalsButton = document.querySelector(".equals-button");
 const numberButtons = document.querySelectorAll(".number-button")
 
+// Initial Run Code / functions:
+operatorButtonHandler();
+
 // Add event listener to all operator buttons
 operatorButtons.forEach(element => {
     element.addEventListener("click", event =>{
@@ -55,6 +58,7 @@ operatorButtons.forEach(element => {
         // reset entryString
         entryString = "";
         displayNumbers(event);
+        operatorButtonHandler();
     });
 });
 
@@ -66,7 +70,7 @@ equalsButton.addEventListener("click",(event)=>{
     // Run calculation
     runCalculation(firstNumber, operator, secondNumber);
     displayNumbers(event);
-
+    operatorButtonHandler();
 })
 
 // Add event listener to all number buttons
@@ -75,8 +79,25 @@ numberButtons.forEach(element => {
         // Add numbers entered to the entryString
         entryString = entryString.concat(event.target.textContent);
         displayNumbers(event);
+        operatorButtonHandler();
     })
 });
+
+// Disable operator buttons if entryString is empty
+function operatorButtonHandler(){
+    if (entryString == ""){
+        setOperatorButtonDisabled(operatorButtons, true);
+    } else {
+        setOperatorButtonDisabled(operatorButtons, false);
+    }
+}
+
+// Enable / Disable operator buttons
+function setOperatorButtonDisabled(nodeList, condition){
+    nodeList.forEach(element => {
+        element.disabled = condition;
+    });
+}
 
 // Handle Dislaying numbers and results in the screen
 function displayNumbers(event) {
